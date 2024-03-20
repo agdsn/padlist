@@ -1,5 +1,6 @@
 {
     "require": {
-        "league/oauth2-client": "^2.7"
+        "league/oauth2-client": "^2.7",
+        "stevenmaguire/oauth2-keycloak": "^5.1"
     }
 }

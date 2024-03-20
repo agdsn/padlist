@@ -18,12 +18,13 @@ if (!isset($_SESSION['user'])) {
 
 $shortName = explode(" ", $_SESSION['user'])[0];
 
-$host = '/run/postgresql';
-$dbname = 'hedgedoc';
-$user = 'hedgedoc';
+$host = getenv('DB_HOST');
+$dbname = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
 
 try {
-    $dbh = new PDO("pgsql:host=$host;dbname=$dbname", $user);
+    $dbh = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
     die();
@@ -54,7 +55,7 @@ function formatDateString($stringDate)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pad lister</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="/pico.min.css">
 
 </head>
 
@@ -74,7 +75,7 @@ function formatDateString($stringDate)
             ?>
                 <tr>
                     <td>
-                        <a href="https://pad.ifsr.de/<?= $row['shortid'] ?>"><?= $row['title'] ?></a>
+                        <a href="<?= getenv("HEDGEDOC_URL") ?>/<?= $row['shortid'] ?>"><?= $row['title'] ?></a>
                     </td>
                     <td>
                         <?= json_decode($row['profile'])->username ?>
