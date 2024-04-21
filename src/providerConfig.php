@@ -10,6 +10,7 @@ $provider = new Keycloak([
     'clientId'              => getenv('KEYCLOAK_CLIENT_ID'),
     'clientSecret'          => getenv('KEYCLOAK_CLIENT_SECRET'),
     'redirectUri'           => getenv('KEYCLOAK_REDIRECT_URI'),
+    'version'               => '24.0.3',
 ]);
 
 return $provider;
