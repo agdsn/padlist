@@ -7,5 +7,5 @@ $_SESSION = array();
 // Finally, destroy the session.
 session_destroy();
 
-// Redirect to login page
-header('Location: index.php');
+// Redirect to keycloak logout
+header('Location: https://alf.agdsn.de/realms/internal/protocol/openid-connect/logout');
