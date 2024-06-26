@@ -78,7 +78,7 @@ function formatDateString($stringDate)
                         <a href="<?= getenv("HEDGEDOC_URL") ?>/<?= $row['shortid'] ?>"><?= $row['title'] ?></a>
                     </td>
                     <td>
-                        <?= json_decode($row['profile'])->username ?>
+                        <?= json_decode($row['profile'])->displayName ?>
                     </td>
                     <td>
                         <?= formatDateString($row['updatedAt']) ?>
